@@ -5,5 +5,9 @@
   &__container {
     height: 150px;
     overflow: hidden;
+
+    &_lg {
+      height: 300px;
+    }
   }
 }
