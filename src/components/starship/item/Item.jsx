@@ -4,9 +4,11 @@ import { Card } from 'react-bootstrap';
 
 import StarshipImage from '../image';
 
-const StarshipItem = ({ starship, ...props }) => {
+import './Item.scss';
+
+const StarshipItem = ({ starship }) => {
   return (
-    <Card {...props}>
+    <Card className="starship-item h-100">
       <StarshipImage starshipId={starship.id} />
       <Card.Body>
         <Card.Title>{starship.name}</Card.Title>
