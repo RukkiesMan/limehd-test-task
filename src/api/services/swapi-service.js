@@ -14,4 +14,21 @@ export default class SwapiService extends ApiBase {
     const [, id] = item.url.match(idRegExp);
     return id;
   };
+
+  transformStarship = starship => {
+    const {
+      name,
+      model,
+      manufacturer,
+      cost_in_credits: costInCredits,
+    } = starship;
+
+    return {
+      id: this.extractId(starship),
+      name,
+      model,
+      manufacturer,
+      costInCredits,
+    };
+  };
 }
