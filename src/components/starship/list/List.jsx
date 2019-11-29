@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { Row, Col } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 import withSwapiService from '../../hoc/with-swapi-service';
 
@@ -28,9 +29,11 @@ const StarshipList = ({ swapiService, ...props }) => {
       ) : (
         <Row {...props}>
           {starships.map(starship => (
-            <Col className="my-2" xs={12} sm={6} key={starship.id}>
-              <StarshipItem starship={starship} />
-            </Col>
+            <LinkContainer to={`/starships/${starship.id}`} key={starship.id}>
+              <Col className="my-2" xs={12} sm={6}>
+                <StarshipItem starship={starship} />
+              </Col>
+            </LinkContainer>
           ))}
         </Row>
       )}
