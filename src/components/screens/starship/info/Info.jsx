@@ -1,12 +1,13 @@
 import React from 'react';
 
+import ScreenLayoutMain from '../../layouts/main';
 import StarshipInfo from '../../../starship/info';
 
 const ScreenStarshipInfo = ({ match }) => {
   return (
-    <div>
+    <ScreenLayoutMain>
       <StarshipInfo starshipId={match.params.id} />
-    </div>
+    </ScreenLayoutMain>
   );
 };
 
