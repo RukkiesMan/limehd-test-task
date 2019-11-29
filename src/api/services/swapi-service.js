@@ -6,4 +6,6 @@ export default class SwapiService extends ApiBase {
   }
 
   getStarships = () => this.get('/starships/');
+
+  getStarship = id => this.get(`/starships/${id}`);
 }
