@@ -28,7 +28,7 @@ const StarshipList = ({ swapiService, ...props }) => {
       ) : (
         <Row {...props}>
           {starships.map(starship => (
-            <Col className="my-2" xs={12} sm={6} key={starship.name}>
+            <Col className="my-2" xs={12} sm={6} key={starship.id}>
               <StarshipItem starship={starship} />
             </Col>
           ))}
