@@ -10,9 +10,9 @@ const StarshipInfo = ({ swapiService, starshipId, ...props }) => {
 
   useEffect(() => {
     const getStarship = async id => {
-      const { data } = await swapiService.getStarship(id);
+      const fetchedStarship = await swapiService.getStarship(id);
 
-      setStarship(data);
+      setStarship(fetchedStarship);
       setLoading(false);
     };
     getStarship(starshipId);

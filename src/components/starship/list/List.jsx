@@ -13,11 +13,9 @@ const StarshipList = ({ swapiService, ...props }) => {
 
   useEffect(() => {
     const getStarships = async () => {
-      const {
-        data: { results },
-      } = await swapiService.getStarships();
+      const fetchedStarships = await swapiService.getStarships();
 
-      setStarships(results);
+      setStarships(fetchedStarships);
       setLoading(false);
     };
     getStarships();
