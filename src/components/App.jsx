@@ -5,14 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { SwapiServiceProvider } from '../contexts/swapi-context';
 import SwapiService from '../api/services/swapi-service';
 
-import StarshipList from './starship/list';
+import ScreenRoot from './screens/Root';
 
 const swapiService = new SwapiService();
 
 const App = () => {
   return (
     <SwapiServiceProvider value={swapiService}>
-      <StarshipList />
+      <ScreenRoot />
     </SwapiServiceProvider>
   );
 };
