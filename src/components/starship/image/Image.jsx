@@ -18,7 +18,6 @@ const StarshipImage = ({ imageService, starshipId, size }) => {
     'starship-image__container_lg': size === 'lg',
     'd-flex': true,
     'justify-content-center': true,
-    'align-items-center': true,
   });
 
   return (
@@ -28,7 +27,11 @@ const StarshipImage = ({ imageService, starshipId, size }) => {
       container={children => {
         return <div className={containerClassName}>{children}</div>;
       }}
-      loader={<Spinner />}
+      loader={
+        <div className="d-flex align-items-center">
+          <Spinner />
+        </div>
+      }
     />
   );
 };
