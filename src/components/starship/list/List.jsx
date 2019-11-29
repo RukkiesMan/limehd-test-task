@@ -5,6 +5,7 @@ import { Row, Col } from 'react-bootstrap';
 import withSwapiService from '../../hoc/with-swapi-service';
 
 import StarshipItem from '../item';
+import Spinner from '../../spinner';
 
 const StarshipList = ({ swapiService, ...props }) => {
   const [starships, setStarships] = useState(null);
@@ -25,7 +26,7 @@ const StarshipList = ({ swapiService, ...props }) => {
   return (
     <React.Fragment>
       {loading ? (
-        <h2>Loading...</h2>
+        <Spinner />
       ) : (
         <Row {...props}>
           {starships.map(starship => (

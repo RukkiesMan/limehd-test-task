@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import withSwapiService from '../../hoc/with-swapi-service';
 
+import Spinner from '../../spinner';
+
 const StarshipInfo = ({ swapiService, starshipId, ...props }) => {
   const [starship, setStarship] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -19,7 +21,7 @@ const StarshipInfo = ({ swapiService, starshipId, ...props }) => {
   return (
     <React.Fragment>
       {loading ? (
-        <h2>Loading...</h2>
+        <Spinner />
       ) : (
         <div {...props}>
           <h2>Name: {starship.name}</h2>
