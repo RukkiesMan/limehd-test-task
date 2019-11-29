@@ -7,7 +7,10 @@ export default class SwapiService extends ApiBase {
 
   getStarships = async () => {
     const res = await this.get('/starships/');
-    return res.data.results.map(this.transformStarship);
+    return {
+      starships: res.data.results.map(this.transformStarship),
+      starshipCount: res.data.count,
+    };
   };
 
   getStarship = async id => {

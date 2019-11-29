@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { Row, Col } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import Pagination from 'react-js-pagination';
 
 import withSwapiService from '../../hoc/with-swapi-service';
 
@@ -10,13 +11,18 @@ import Spinner from '../../spinner';
 
 const StarshipList = ({ swapiService, ...props }) => {
   const [starships, setStarships] = useState(null);
+  const [starshipCount, setStarshipCount] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getStarships = async () => {
-      const fetchedStarships = await swapiService.getStarships();
+      const {
+        starships: fetchedStarships,
+        starshipCount: fetchedStarshipCount,
+      } = await swapiService.getStarships();
 
       setStarships(fetchedStarships);
+      setStarshipCount(fetchedStarshipCount);
       setLoading(false);
     };
     getStarships();
