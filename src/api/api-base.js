@@ -10,7 +10,7 @@ export default class ApiBase {
       },
     });
 
-    this.get = async path => instance.get(path);
+    this.get = async (path, config) => instance.get(path, { ...config });
 
     this.create = async (path, body) => instance.post(path, body);
 
