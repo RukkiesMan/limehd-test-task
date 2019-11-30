@@ -10,9 +10,21 @@ import StarshipItem from '../item';
 import Spinner from '../../spinner';
 
 const StarshipList = ({ swapiService, ...props }) => {
+  const [activePage, setActivePage] = useState(1);
   const [starships, setStarships] = useState(null);
   const [starshipCount, setStarshipCount] = useState(0);
   const [loading, setLoading] = useState(true);
+
+  const handlePageChange = async page => {
+    setLoading(true);
+    const { starships: fetchedStarships } = await swapiService.getStarships(
+      page,
+    );
+    setStarships(fetchedStarships);
+
+    setLoading(false);
+    setActivePage(page);
+  };
 
   useEffect(() => {
     const getStarships = async () => {
@@ -33,15 +45,30 @@ const StarshipList = ({ swapiService, ...props }) => {
       {loading ? (
         <Spinner />
       ) : (
-        <Row {...props}>
-          {starships.map(starship => (
-            <LinkContainer to={`/starships/${starship.id}`} key={starship.id}>
-              <Col className="my-2" xs={12} sm={6}>
-                <StarshipItem starship={starship} />
-              </Col>
-            </LinkContainer>
-          ))}
-        </Row>
+        <React.Fragment>
+          <Row {...props}>
+            {starships.map(starship => (
+              <LinkContainer to={`/starships/${starship.id}`} key={starship.id}>
+                <Col className="my-2" xs={12} sm={6}>
+                  <StarshipItem starship={starship} />
+                </Col>
+              </LinkContainer>
+            ))}
+          </Row>
+          <Row className="mt-3">
+            <Col className="d-flex justify-content-center">
+              <Pagination
+                activePage={activePage}
+                itemsCountPerPage={10}
+                totalItemsCount={starshipCount}
+                pageRangeDisplayed={3}
+                onChange={handlePageChange}
+                itemClass="page-item"
+                linkClass="page-link"
+              />
+            </Col>
+          </Row>
+        </React.Fragment>
       )}
     </React.Fragment>
   );
