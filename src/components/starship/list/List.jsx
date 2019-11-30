@@ -47,8 +47,12 @@ const StarshipList = ({ swapiService, ...props }) => {
       ) : (
         <React.Fragment>
           <Row {...props}>
-            {starships.map(starship => (
-              <LinkContainer to={`/starships/${starship.id}`} key={starship.id}>
+            {starships.map((starship, index) => (
+              <LinkContainer
+                to={`/starships/${starship.id}`}
+                key={starship.id}
+                tabIndex={1}
+              >
                 <Col className="my-2" xs={12} sm={6}>
                   <StarshipItem starship={starship} />
                 </Col>
@@ -65,6 +69,7 @@ const StarshipList = ({ swapiService, ...props }) => {
                 onChange={handlePageChange}
                 itemClass="page-item"
                 linkClass="page-link"
+                tabIndex={10}
               />
             </Col>
           </Row>

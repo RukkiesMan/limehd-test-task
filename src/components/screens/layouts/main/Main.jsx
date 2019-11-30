@@ -8,7 +8,7 @@ const ScreenLayoutMain = ({ children }) => {
     <React.Fragment>
       <Navbar bg="dark" variant="dark">
         <LinkContainer to="/">
-          <Navbar.Brand>Starship Gallery</Navbar.Brand>
+          <Navbar.Brand tabIndex={-1}>Starship Gallery</Navbar.Brand>
         </LinkContainer>
       </Navbar>
       <Container className="my-5">{children}</Container>
